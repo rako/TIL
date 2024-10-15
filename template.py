@@ -31,19 +31,16 @@ dayflag = False
 #カレントディレクトリのなかに年月のディレクトリがあるかと日のファイルがあるかどうかを確認。該当するディレクトリとファイルがない場合は何もしないことにする。
 #match case文を使ったらいいかもしれない。
 for yearname in os.scandir(path='.'):
-    if yearname.is_dir(): #yearnameがディレクトリでない場合はスキップ
-        if yearname == year: #年のディレクトリが一緒の場合
-            yeardir = yearname
-            yearflag = True
-            for monthname in os.scandir(path='./yeardir'):
-                if monthname.is_dir():
-                    if monthname == month:
-                        monthdir = monthname
-                        monthflag = True
-                        for dayname in os.scandir(path='./yeardir/monthdir'):
-                            if dayname.is_file():
-                                if dayname == day:
-                                    dayflag = True
+    if yearname.is_dir() and yearname == year: #yearnameがディレクトリでない場合はスキップ #年のディレクトリが一緒の場合
+        yeardir = yearname
+        yearflag = True
+        for monthname in os.scandir(path='./yeardir'):
+            if monthname.is_dir() and monthname == month:
+                monthdir = monthname
+                monthflag = True
+                for dayname in os.scandir(path='./yeardir/monthdir'):
+                    if dayname.is_file() and dayname == day:
+                        dayflag = True
 
 #年月のディレクトリがない場合は作成
 if yearflag == False: #年のディレクトリがない場合
