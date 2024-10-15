@@ -47,7 +47,7 @@ if yearflag == False: #年のディレクトリがない場合
     if monthflag == False: #月のディレクトリもない場合
         os.mkdir(f'{year}/{month}')
     else:
-        pass #年のディレクトリがなくて月のディレクトリがある場合はないとする
+        pass #年のディレクトリがなくて月のディレクトリがある場合は年を4桁で管理しているためケースはないとする
 else: #年のディレクトリがある場合
     if monthflag == False: #月のディレクトリはない場合
         os.chdir('yeardir') #ここでディレクトリ移動しないで済む方法があるかもしれない
