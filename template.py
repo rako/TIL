@@ -2,7 +2,7 @@ import datetime
 import os
 
 #classmethod datetime.date.today() 現在のローカルな日付を返す
-d_today = datetime.date.today().split('-') #2020-01-01の形式で返す
+d_today = str(datetime.date.today()).split('-') #2020-01-01の形式で返す
 year = str(d_today[0])
 month = str(d_today[1])
 day = str(d_today[2])
