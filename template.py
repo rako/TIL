@@ -23,17 +23,10 @@ content = """
 """
 
 
-#ディレクトリの作成を監視するフラグ, これないとfor文が回るごとにディレクトリが作成されてしまうかも？
-yearflag = False
-monthflag = False
-dayflag = False
-
 #これ一行でディレクトリが存在してもエラーが出なくて、ディレクトリがない場合はディレクトリを作成してくれる
 os.makedirs(f'{year}/{month}', exist_ok=True)
 
-if dayflag == False: #日のファイルがない場合ファイルを作成
-    os.chdir('yeardir/monthdir')
-    with open(f'{day}.md', 'x', encoding='utf-8') as f: #そのディレクトリに移動してファイルを作成
-        f.write(content)
+with open(f'{year}/{month}/{day}.md', 'x', encoding='utf-8') as f: #そのディレクトリに移動してファイルを作成
+    f.write(content)
 
 #ここにファイルに追記する処理をchrome拡張機能で書く
