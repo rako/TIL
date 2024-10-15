@@ -23,10 +23,16 @@ content = """
 """
 
 
-#これ一行でディレクトリが存在してもエラーが出なくて、ディレクトリがない場合はディレクトリを作成してくれる
-os.makedirs(f'{year}/{month}', exist_ok=True)
+#これでディレクトリが存在してもエラーが出なくて、ディレクトリがない場合はディレクトリを作成してくれる
+dir_path = f"{year}/{month}"
+os.makedirs(dir_path, exist_ok=True)
 
-with open(f'{year}/{month}/{day}.md', 'x', encoding='utf-8') as f: #そのディレクトリに移動してファイルを作成
-    f.write(content)
+#ファイルが存在しているかどうかを確認して、なければファイルを作成する
+file_path = f"{dir_path}/{day}.md"
+if os.path.isfile(file_path):
+    print("ファイルは既にあります")
+else:
+    with open(file_path, 'w', encoding="utf-8") as f: #wモードはファイルが存在しなければ新規作成、存在すれば上書き
+        f.write(content)
 
 #ここにファイルに追記する処理をchrome拡張機能で書く
