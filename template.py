@@ -28,32 +28,8 @@ yearflag = False
 monthflag = False
 dayflag = False
 
-#カレントディレクトリのなかに年月のディレクトリがあるかと日のファイルがあるかどうかを確認。該当するディレクトリとファイルがない場合は何もしないことにする。
-#match case文を使ったらいいかもしれない。
-for yearname in os.scandir(path='.'):
-    if yearname.is_dir() and yearname == year: #yearnameがディレクトリでない場合はスキップ #年のディレクトリが一緒の場合
-        yeardir = yearname
-        yearflag = True
-        for monthname in os.scandir(path='./yeardir'):
-            if monthname.is_dir() and monthname == month:
-                monthdir = monthname
-                monthflag = True
-                for dayname in os.scandir(path='./yeardir/monthdir'):
-                    if dayname.is_file() and dayname == day:
-                        dayflag = True
-
-#年月のディレクトリがない場合は作成
-if yearflag == False: #年のディレクトリがない場合
-    if monthflag == False: #月のディレクトリもない場合
-        os.mkdir(f'{year}/{month}')
-    else:
-        pass #年のディレクトリがなくて月のディレクトリがある場合は年を4桁で管理しているためケースはないとする
-else: #年のディレクトリがある場合
-    if monthflag == False: #月のディレクトリはない場合
-        os.chdir('yeardir') #ここでディレクトリ移動しないで済む方法があるかもしれない
-        os.mkdir('monthdir')
-    else:
-        pass #どちらもある場合
+#これ一行でディレクトリが存在してもエラーが出なくて、ディレクトリがない場合はディレクトリを作成してくれる
+os.makedirs(f'{year}/{month}', exist_ok=True)
 
 if dayflag == False: #日のファイルがない場合ファイルを作成
     os.chdir('yeardir/monthdir')
