@@ -10,8 +10,7 @@ day = str(d_today[2])
 #dayのみ一桁の場合は0をつける条件にしても良いかもしれない。monthも同様になるので、これでいいかもしれない。
 
 #mdファイルのテンプレートの中身
-content = """
-# Today I Learned
+content = """# Today I Learned
 
 ## Done
 
