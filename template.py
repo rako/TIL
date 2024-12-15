@@ -14,11 +14,13 @@ content = """# Today I Learned
 
 ## Done
 
-## Todo
+## Thinking
 
-## 読みたい本リスト
+## ToDo
 
-## 参考文献リスト
+## ToRead
+
+## Reference
 """
 
 
