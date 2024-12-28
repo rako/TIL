@@ -14,7 +14,7 @@ content = """# Today I Learned
 
 ## Done
 
-## Thinking
+## Thought
 
 ## ToDo
 
